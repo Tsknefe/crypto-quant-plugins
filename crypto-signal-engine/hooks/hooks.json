@@ -1,1 +1,3 @@
-{ "hooks": [] }
+'{"hooks":[]}' | Out-File -Encoding utf8 crypto-financial-analysis\hooks\hooks.json
+'{"hooks":[]}' | Out-File -Encoding utf8 crypto-risk-engine\hooks\hooks.json
+'{"hooks":[]}' | Out-File -Encoding utf8 crypto-portfolio-management\hooks\hooks.json
