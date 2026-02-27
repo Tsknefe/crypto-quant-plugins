@@ -45,3 +45,7 @@ coverage/
 TASKS.md
 MEMORY.md
 .claude/worktrees/
+
+# IDE
+.idea/
+*.iml
