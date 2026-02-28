@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "required": ["symbol", "timeframe", "intent", "confidence", "signal_score", "levels", "controls"],
+  "properties": {
+    "symbol": { "type": "string" },
+    "timeframe": { "type": "string" },
+    "intent": { "type": "string", "enum": ["LONG", "SHORT", "HOLD"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "signal_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "levels": {
+      "type": "object",
+      "required": ["entry", "stop_loss", "take_profit"],
+      "properties": {
+        "entry": { "type": "number" },
+        "stop_loss": { "type": "number" },
+        "take_profit": { "type": "number" }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "required": ["position_size_pct", "cooldown_bars", "gating"],
+      "properties": {
+        "position_size_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "cooldown_bars": { "type": "number", "minimum": 0 },
+        "gating": {
+          "type": "object",
+          "properties": {
+            "conf_min": { "type": "number" },
+            "min_edge": { "type": "number" },
+            "volatility_block": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Short human-readable rationale"
+    }
+  }
+}
