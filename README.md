@@ -1,6 +1,19 @@
-# Claude for Financial Services Plugins
+## Crypto Quant Plugins
 
-Plugins that turn Claude into a specialist for financial services — investment banking, equity research, private equity, and wealth management. Built for [Claude Cowork](https://claude.com/product/cowork), also compatible with [Claude Code](https://claude.com/product/claude-code).
+This fork extends the original financial-services-plugins structure with a crypto quant workflow suite.
+
+### Included crypto plugins
+- **crypto-financial-analysis** — market snapshots, token tearsheets, and reusable research templates.
+- **crypto-signal-engine** — indicator + model based signal generation with confidence/edge gating.
+- **crypto-risk-engine** — volatility-aware sizing guidance, ATR-based stops, drawdown/cooldown guardrails.
+- **crypto-portfolio-management** — exposure tracking, PnL summaries, allocation monitoring, and reporting.
+
+### Example commands
+- `/market-snapshot BTCUSDT 1h`
+- `/signal BTCUSDT 15m`
+- `/risk-check BTCUSDT 1h`
+- `/portfolio-report`
+- `/trade-intent BTCUSDT 15m`
 
 ## Why Plugins
 
