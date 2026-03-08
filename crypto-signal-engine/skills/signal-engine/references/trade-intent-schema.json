@@ -1,39 +1,131 @@
 {
   "type": "object",
-  "required": ["symbol", "timeframe", "intent", "confidence", "signal_score", "levels", "controls"],
+  "required": [
+    "symbol",
+    "timeframe",
+    "timestamp",
+    "intent",
+    "confidence",
+    "signal_score",
+    "levels",
+    "controls",
+    "risk_notes",
+    "reject_reasons"
+  ],
   "properties": {
-    "symbol": { "type": "string" },
-    "timeframe": { "type": "string" },
-    "intent": { "type": "string", "enum": ["LONG", "SHORT", "HOLD"] },
-    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-    "signal_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "symbol": {
+      "type": "string"
+    },
+    "timeframe": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO-8601 timestamp for when the trade intent was generated"
+    },
+    "intent": {
+      "type": "string",
+      "enum": ["LONG", "SHORT", "HOLD"]
+    },
+    "predicted_price": {
+      "type": ["number", "null"]
+    },
+    "edge_pct": {
+      "type": ["number", "null"],
+      "description": "Computed as (predicted_price - entry) / entry when available"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "signal_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "market_regime": {
+      "type": ["string", "null"],
+      "description": "Optional context such as bullish_low_vol, bearish_high_vol, etc."
+    },
     "levels": {
       "type": "object",
       "required": ["entry", "stop_loss", "take_profit"],
       "properties": {
-        "entry": { "type": "number" },
-        "stop_loss": { "type": "number" },
-        "take_profit": { "type": "number" }
+        "entry": {
+          "type": ["number", "null"]
+        },
+        "stop_loss": {
+          "type": ["number", "null"]
+        },
+        "take_profit": {
+          "type": ["number", "null"]
+        }
       }
     },
     "controls": {
       "type": "object",
       "required": ["position_size_pct", "cooldown_bars", "gating"],
       "properties": {
-        "position_size_pct": { "type": "number", "minimum": 0, "maximum": 100 },
-        "cooldown_bars": { "type": "number", "minimum": 0 },
+        "position_size_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "cooldown_bars": {
+          "type": "number",
+          "minimum": 0
+        },
         "gating": {
           "type": "object",
+          "required": [
+            "conf_min",
+            "min_edge",
+            "confidence_pass",
+            "edge_pass",
+            "volatility_block",
+            "cooldown_block"
+          ],
           "properties": {
-            "conf_min": { "type": "number" },
-            "min_edge": { "type": "number" },
-            "volatility_block": { "type": "boolean" }
+            "conf_min": {
+              "type": "number"
+            },
+            "min_edge": {
+              "type": "number"
+            },
+            "confidence_pass": {
+              "type": "boolean"
+            },
+            "edge_pass": {
+              "type": "boolean"
+            },
+            "volatility_block": {
+              "type": "boolean"
+            },
+            "cooldown_block": {
+              "type": "boolean"
+            }
           }
         }
       }
     },
+    "risk_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reject_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_model": {
+      "type": ["string", "null"]
+    },
     "explanation": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Short human-readable rationale"
     }
   }

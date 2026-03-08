@@ -1,7 +1,7 @@
 {
   "name": "crypto-signal-engine",
   "version": "0.1.0",
-  "description": "Crypto signal generation workflows: indicators, model edge + confidence, signal scoring, and standardized trade-intent outputs.",
+  "description": "Crypto signal generation workflows for indicator alignment, model edge and confidence evaluation, explainable signal scoring, and standardized trade-intent outputs.",
   "author": {
     "name": "Tsknefe"
   }
